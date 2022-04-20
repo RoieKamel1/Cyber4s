@@ -64,7 +64,7 @@ class Piece {
 
 	getPawnRelativeMoves() {
 		let direction = 1;
-		if ((this.player = WHITE_PLAYER)) {
+		if (this.player == WHITE_PLAYER) {
 			direction = 1;
 		} else {
 			direction = -1;
