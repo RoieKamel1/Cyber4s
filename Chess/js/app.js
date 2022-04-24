@@ -1,7 +1,6 @@
 const BOARD_SIZE = 8;
 const WHITE_PLAYER = "white";
 const BLACK_PLAYER = "black";
-console.log("yuval");
 
 const PAWN = "pawn";
 const ROOK = "rook";
@@ -206,6 +205,16 @@ function onCellClick(event, row, col) {
 	selectedCell = event.currentTarget;
 	selectedCell.classList.add("selected");
 }
+
+// function movePiece() {
+// possibleMoves.forEach((possibleMove) => {
+// 	possibleMove.addEventListener("click", () => {
+// 		if (getelementbyclassname("possible-move")) {
+// 			selectedCell.addImage(cell, piece.player, piece.type);
+// 		}
+// 	});
+// });
+// }
 
 function createChessBoard() {
 	table = document.createElement("table");
