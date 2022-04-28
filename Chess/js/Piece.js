@@ -6,6 +6,7 @@ class Piece {
 		this.col = col;
 		this.type = type;
 		this.player = player;
+		this.turnCounter = 0;
 	}
 
 	getOpponent() {
@@ -13,6 +14,24 @@ class Piece {
 			return BLACK_PLAYER;
 		}
 		return WHITE_PLAYER;
+	}
+
+	getMovesInDirection(directionRow, directionCol, boardData) {
+		let result = [];
+
+		for (let i = 1; i < BOARD_SIZE; i++) {
+			let row = this.row + directionRow * i;
+			let col = this.col + directionCol * i;
+			if (boardData.isEmpty(row, col)) {
+				result.push([row, col]);
+			} else if (boardData.isPlayer(row, col, this.getOpponent())) {
+				result.push([row, col]);
+				return result;
+			} else if (boardData.isPlayer(row, col, this.player)) {
+				return result;
+			}
+		}
+		return result;
 	}
 
 	getPossibleMoves(boardData) {
@@ -99,24 +118,6 @@ class Piece {
 		result = result.concat(this.getMovesInDirection(1, 0, boardData));
 		result = result.concat(this.getMovesInDirection(0, -1, boardData));
 		result = result.concat(this.getMovesInDirection(0, 1, boardData));
-		return result;
-	}
-
-	getMovesInDirection(directionRow, directionCol, boardData) {
-		let result = [];
-
-		for (let i = 1; i < BOARD_SIZE; i++) {
-			let row = this.row + directionRow * i;
-			let col = this.col + directionCol * i;
-			if (boardData.isEmpty(row, col)) {
-				result.push([row, col]);
-			} else if (boardData.isPlayer(row, col, this.getOpponent())) {
-				result.push([row, col]);
-				return result;
-			} else if (boardData.isPlayer(row, col, this.player)) {
-				return result;
-			}
-		}
 		return result;
 	}
 
