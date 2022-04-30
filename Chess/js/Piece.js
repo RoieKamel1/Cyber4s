@@ -18,7 +18,6 @@ class Piece {
 
 	getMovesInDirection(directionRow, directionCol, boardData) {
 		let result = [];
-
 		for (let i = 1; i < BOARD_SIZE; i++) {
 			let row = this.row + directionRow * i;
 			let col = this.col + directionCol * i;
@@ -171,6 +170,15 @@ class Piece {
 				result.push([row, col]);
 			}
 		}
+		if ((whiteRightRookDidntMove && whiteKingDidntMove) || (whiteLeftRookDidntMove && whiteKingDidntMove)) {
+			if (this.player === WHITE_PLAYER) {
+				result.push([0, 1]);
+			}
+			if (this.player === BLACK_PLAYER) {
+				result.push([7, 1]);
+			}
+		}
+
 		return result;
 	}
 
