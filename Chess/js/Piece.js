@@ -16,6 +16,8 @@ class Piece {
 		return WHITE_PLAYER;
 	}
 
+	//checks if the direction the piece wants to go in has any free cells and
+	//manipulates its movement options based on whether there are any enemy pieces in sight, on if its empty and on if there are any allies in sight
 	getMovesInDirection(directionRow, directionCol, boardData) {
 		let result = [];
 		for (let i = 1; i < BOARD_SIZE; i++) {
@@ -33,6 +35,7 @@ class Piece {
 		return result;
 	}
 
+	//gets pieces movement whike taking into considaration the boarddata and the cells in the way
 	getPossibleMoves(boardData) {
 		// Get moves
 		let moves;
